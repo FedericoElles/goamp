@@ -13,20 +13,44 @@ fetcher.get = function(data){
       } else {
         let $ = cheerio.load(body);
         var links = [];
-        var regArticle = new RegExp(data.validArticles, "i");
-        var regList = new RegExp(data.validLists, "i");
+        var regArticle = new RegExp(data.page.validArticles, "g");
+        var regList = new RegExp(data.page.validLists, "g");
+        var isValidArticle = false;
+        var isValidList = false;
+        //console.log('regex', data.validArticles , regArticle);
+        
+        var dirUrlAdded = {};
         
         $('a').each(function(i, elem) {
-          var url = $(this).attr('href');
+          var urlOriginal = $(this).attr('href');
+          var url = '';
           
           //check if url is valid article - validArticles
+          var match = regArticle.exec(urlOriginal);
+          if (match && match[0] !== ''){
+            url = match[1];
+            isValidArticle = true;
+          }
           
-          links.push({
-            url: url,
-            title: $(this).attr('title') || $(this).attr('alt'),
-            validArticle: false,
-            validList: false
-          });
+          //check if url is valid list - validLists
+          if (!isValidArticle){
+            var match2 = regList.exec(urlOriginal);
+            if (match2 && match2[0] !== ''){
+              url = match2[1];
+              isValidList = true;
+            }          
+          }
+          
+          if (url && typeof dirUrlAdded[url] === 'undefined'){
+            dirUrlAdded[url] = true;
+            links.push({
+              url: url,
+              urlOriginal: urlOriginal,
+              title: $(this).attr('title') || $(this).attr('alt'),
+              validArticle: isValidArticle,
+              validList: isValidList
+            });
+          }
           
         });
         deferred.resolve({
