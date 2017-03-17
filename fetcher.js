@@ -9,9 +9,11 @@ fetcher.get = function(data){
   var deferred = Q.defer();
     request(data.page.url + data.remoteUrl, function (error, response, body) {
       if (error){
-        deferred.reject(new Error(error));
+        console.log('Error', error);
+        deferred.reject(error);
       } else {
         let $ = cheerio.load(body);
+        //console.log('body loaded', body);
         var links = [];
         var regArticle = new RegExp(data.page.validArticles, "g");
         var regList = new RegExp(data.page.validLists, "g");

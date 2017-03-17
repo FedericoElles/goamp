@@ -3,7 +3,12 @@
 
 // init project
 var express = require('express');
+var exphbs  = require('express-handlebars');
+
 var app = express();
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 var pageDirectory = require('./pageDirectory.json');
 var fetcher = require('./fetcher.js');
 
@@ -18,36 +23,42 @@ var fetcher = require('./fetcher.js');
 app.use(express.static('public'));
 
 // handelsblatt/ - originalUrl
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+app.get("/", function (req, res) {
+  //response.sendFile(__dirname + '/views/index.html');
+  res.render('home', {});
 });
 
 app.get("/:page/*", function (req, res) {
   var data = {
     debug: !!req.query.debug,
-    page: req.params.page,
+    pageId: req.params.page,
     url: req.originalUrl
   };
   var parts = data.url.substr(1).split('/');
   parts.shift(); //remove first
   data.parts = parts;
   data.remoteUrl = '/' + data.parts.join('/');
-  data.page = pageDirectory[data.page];
+  data.page = pageDirectory[data.pageId];
   
-  fetcher.get(data).then(function(json){
-    var html = "";
-    data.json = json;
-    data.json.links.forEach(function(link){
-      html += link.url + '<br>';
+  if (true){
+    fetcher.get(data).then(function(fetchData){
+      var html = "";
+      data.links = fetchData.links;
+      data.links.forEach(function(link){
+        html += link.url + '<br>';
+      });
+      data.json = JSON.stringify(data, undefined, 4);
+      if (data.debug){
+        res.send(data);
+      } else {
+        res.render('page', data);
+      }
+    }).catch(function(err){
+      res.send(err);
     });
-    if (data.debug){
-      res.send(json);
-    } else {
-      res.send(html);
-    }
-  });
-  //res.send(data);
-  
+  } else {
+    res.send(data);
+  }
 });
 
 // listen for requests :)
