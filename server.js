@@ -23,8 +23,8 @@ app.get("/", function (request, response) {
 });
 
 app.get("/:page/*", function (req, res) {
-
   var data = {
+    debug: !!req.query.debug,
     page: req.params.page,
     url: req.originalUrl
   };
@@ -40,7 +40,11 @@ app.get("/:page/*", function (req, res) {
     data.json.links.forEach(function(link){
       html += link.url + '<br>';
     });
-    res.send(data);
+    if (data.debug){
+      res.send(json);
+    } else {
+      res.send(html);
+    }
   });
   //res.send(data);
   

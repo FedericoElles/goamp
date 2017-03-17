@@ -15,13 +15,13 @@ fetcher.get = function(data){
         var links = [];
         var regArticle = new RegExp(data.page.validArticles, "g");
         var regList = new RegExp(data.page.validLists, "g");
-        var isValidArticle = false;
-        var isValidList = false;
         //console.log('regex', data.validArticles , regArticle);
         
         var dirUrlAdded = {};
         
         $('a').each(function(i, elem) {
+         var isValidArticle = false;
+          var isValidList = false;     
           var urlOriginal = $(this).attr('href');
           var url = '';
           
@@ -33,7 +33,7 @@ fetcher.get = function(data){
           }
           
           //check if url is valid list - validLists
-          if (!isValidArticle){
+          if (isValidArticle === false){
             var match2 = regList.exec(urlOriginal);
             if (match2 && match2[0] !== ''){
               url = match2[1];
