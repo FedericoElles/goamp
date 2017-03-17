@@ -35,7 +35,11 @@ app.get("/:page/*", function (req, res) {
   data.page = pageDirectory[data.page];
   
   fetcher.get(data).then(function(json){
+    var html = "";
     data.json = json;
+    data.json.links.forEach(function(link){
+      html += link.url + '<br>';
+    });
     res.send(data);
   });
   //res.send(data);
