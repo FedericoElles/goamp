@@ -3,6 +3,8 @@
     "url": "https://www.handelsblatt.com",
     "urlAMP": "https://amp.handelblatt.com",
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
-    "validLists": "^(\\/\\D*\\/).*"
+    "validLists": "^(\\/\\D*\\/).*",
+    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*"],
+    "titleClues": ["h2", "h3"]
   }
 }

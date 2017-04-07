@@ -44,9 +44,9 @@ app.get("/:page/*", function (req, res) {
     fetcher.get(data).then(function(fetchData){
       var html = "";
       data.links = fetchData.links;
-      data.links.forEach(function(link){
-        html += link.url + '<br>';
-      });
+      // data.links.forEach(function(link){
+      //   html += link.url + '<br>';
+      // });
       data.json = JSON.stringify(data, undefined, 4);
       if (data.debug){
         res.send(data);
