@@ -2,6 +2,8 @@ let cheerio = require('cheerio')
 var request = require('request');
 var Q = require('q');
 
+var emojify = require('./emojify');
+
 
 var fetcher = {};
 
@@ -78,8 +80,8 @@ fetcher.get = function(data){
             
             if (!title || typeof title === 'undefined'){
               title = $(this).text();
-              if (title.length>100){
-                title = title.substr(0,100) + '...';
+              if (title.length>150){
+                title = title.substr(0,150) + '...';
               }
             }
             
@@ -92,8 +94,11 @@ fetcher.get = function(data){
               if (isValidArticle){
                 links.articles.push({
                   url: url,
+                  urlAMP: data.page.urlAMP + url,
+                  urlOriginal: data.page.url + url,
                   //urlOriginal: urlOriginal,
-                  title: title || ''
+                  title: title || '',
+                  emoji: emojify.analyse(title)
                 });
               } else if (isValidList){
                 links.lists.push({

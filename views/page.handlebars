@@ -1,3 +1,18 @@
-<h1>Example App: Page</h1>
 
-<pre>{{{json}}}</pre>
+
+
+<div class="o-wrapper u-pad-s">
+
+
+  <h1 class="u-h1 u-color-1">{{pageId}}</h1>
+
+  <h2 class="u-h2">Artikel</h2>
+
+  {{#each links.articles }}
+    {{> teaser}}
+  {{/each}}
+
+  <pre>{{{json}}}</pre>
+
+
+</div>
