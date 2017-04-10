@@ -1,15 +1,32 @@
 var emo = [];
 
 var map = {
-  '📈': ['Börse', 'DAX', 'Aktie'],
+  '📈': ['Börse', 'DAX', 'Dax', 'Aktie'],
   '🏭': ['Industrie'],
-  '💥': ['Anschlag', 'Bombe'],
-  '🏦': ['Bank'],
-  '💰': ['Finanzen'],
+  '💥': ['Anschlag', 'Anschlägen','Bombe'],
+  '🏦': ['Bank','Notenbank','Zentralbank'],
+  '💰': ['Finanzen','Sparprogramm'],
+  '⚖️': ['Gericht'],
   '🗽': ['US-', 'USA'],
   '🗻': ['Japan'],
   '🐉': ['China'],
-  '❤️': ['Erotik']
+  '❤️': ['Erotik'],
+  '📺': ['TV-'],
+  '😓': ['Problem'],
+  '⚽': ['Fußball'],
+  '🏁': ['Formel 1'],
+  '👛': ['Rechnung'],
+  '✈️': ['Airlines', 'Flugzeug'],
+  '🌍': ['Welt'],
+  '📱': ['Smartphone'],
+  '🎮': ['Nintendo'],
+  '⚛️': ['Atomkraftwerk'],
+  '👀': ['Google'],
+  '👨': ['Facebook'],
+  '🍎': ['Apple'],
+  '🍕': ['Pizza'],
+  '🚫': ['Diesel']
+  //'': [''],
 };
 
 var dict = [];

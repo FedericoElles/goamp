@@ -3,3 +3,8 @@
 .c-teaser__original {
   margin: 5px;
 }
+
+a.c-teaser__amp:visited{
+  color: #CCC;
+  background-color: #F5F5F5;
+}

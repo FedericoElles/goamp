@@ -1,11 +1,26 @@
 {
   "handelsblatt": {
     "id": "handelsblatt",
+    "emoji": "💼",
+    "title": "Handelsblatt",
     "url": "https://www.handelsblatt.com",
     "urlAMP": "https://amp.handelsblatt.com",
+    "remove": [".vhb-type-imagegallery",".vhb-eye-catcher-wrapper",".vhb-serviceoffer"],
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
     "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*"],
     "titleClues": ["h2", "h3"]
-  }
+  },
+  "wiwo": {
+    "id": "wiwo",
+    "emoji": "🎲",
+    "title": "Wirtschafts Woche",
+    "url": "https://www.wiwo.de",
+    "urlAMP": "https://amp.wiwo.de",
+    "remove": [".hcf-doctype-imagegallery",".hcf-column.hcf-column2.hcf-ticker-box",".vhb-serviceoffer"],
+    "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
+    "validLists": "^(\\/\\D*\\/).*",
+    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*",".*daily-challenge.*"],
+    "titleClues": ["h2", "h3"]
+  }  
 }

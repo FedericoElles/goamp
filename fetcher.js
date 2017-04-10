@@ -15,6 +15,13 @@ fetcher.get = function(data){
         deferred.reject(error);
       } else {
         let $ = cheerio.load(body);
+        
+        //remove everything not required in DOM
+        data.page.remove.forEach(function(selector){
+          console.log('Remove:' + selector + ': ' + $(selector).length);
+          $(selector).remove();
+        });
+        
         //console.log('body loaded', body);
         var links = {
           lists: [],
@@ -66,7 +73,7 @@ fetcher.get = function(data){
             }
 
             //check for title
-            var title = $(this).attr('title') || $(this).attr('alt');
+            var title = ''; //$(this).attr('title') || $(this).attr('alt');
             
             var searchTitle = false;
             var clues= data.page.titleClues;
@@ -89,7 +96,7 @@ fetcher.get = function(data){
               title = title.replace(/(\r\n|\n|\r)/gm,"");
               title = title.replace(/\s+/g, ' ');
             }
-            if (url && typeof dirUrlAdded[url] === 'undefined'){
+            if (title && url && typeof dirUrlAdded[url] === 'undefined'){
               dirUrlAdded[url] = true;
               if (isValidArticle){
                 links.articles.push({

@@ -2,18 +2,19 @@
 
 
 <div class="o-wrapper u-pad-s">
+  <p><a href="/">Startseite</a></p>
 
 
-  <h1 class="u-h1 u-color-1">{{pageId}}</h1>
+  <a href="/{{pageId}}/"><h1 class="u-h1 u-color-1">{{page.title}}</h1></a>
 
-  <h2 class="u-h2">Artikel</h2>
+  <h2 class="u-h3">Artikel</h2>
 
   {{#each links.articles }}
     {{> teaser}}
   {{/each}}
 
 
-  <h2 class="u-h2">Unterseiten</h2>
+  <h2 class="u-h3">Unterseiten</h2>
   
   {{#each links.lists }}
     {{> link}}
