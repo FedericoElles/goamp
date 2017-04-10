@@ -24,8 +24,13 @@ app.use(express.static('public'));
 
 // handelsblatt/ - originalUrl
 app.get("/", function (req, res) {
-  //response.sendFile(__dirname + '/views/index.html');
-  res.render('home', {});
+  var data = {
+    debug: !!req.query.debug,
+    pages: pageDirectory
+  };  
+  data.json = JSON.stringify(data, undefined, 4);
+  
+  res.render('home', data);
 });
 
 app.get("/:page/*", function (req, res) {
@@ -48,11 +53,11 @@ app.get("/:page/*", function (req, res) {
       //   html += link.url + '<br>';
       // });
       data.json = JSON.stringify(data, undefined, 4);
-      if (data.debug){
-        res.send(data);
-      } else {
-        res.render('page', data);
-      }
+      //if (data.debug){
+      //  res.send(data);
+      //} else {
+      res.render('page', data);
+      //}
     }).catch(function(err){
       res.send(err);
     });

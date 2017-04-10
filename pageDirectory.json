@@ -1,5 +1,6 @@
 {
   "handelsblatt": {
+    "id": "handelsblatt",
     "url": "https://www.handelsblatt.com",
     "urlAMP": "https://amp.handelsblatt.com",
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",

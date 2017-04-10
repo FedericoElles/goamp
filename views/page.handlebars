@@ -12,7 +12,16 @@
     {{> teaser}}
   {{/each}}
 
-  <pre>{{{json}}}</pre>
+
+  <h2 class="u-h2">Unterseiten</h2>
+  
+  {{#each links.lists }}
+    {{> link}}
+  {{/each}}
 
 
+  {{#if  debug}}
+    <hr>
+    <pre>{{{json}}}</pre>
+  {{/if}}
 </div>

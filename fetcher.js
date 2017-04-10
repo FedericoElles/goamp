@@ -102,10 +102,9 @@ fetcher.get = function(data){
                 });
               } else if (isValidList){
                 links.lists.push({
-                  url: url,
+                  url: '/' + data.page.id + url,
                   //urlOriginal: urlOriginal,
-                  title: title || '',
-                  valid: isValid
+                  title: title || ''
                 }); 
               } else {
                 links.errors.push({

@@ -1,12 +1,14 @@
 var emo = [];
 
 var map = {
-  '📈': ['Börse', 'DAX'],
+  '📈': ['Börse', 'DAX', 'Aktie'],
   '🏭': ['Industrie'],
   '💥': ['Anschlag', 'Bombe'],
+  '🏦': ['Bank'],
   '💰': ['Finanzen'],
   '🗽': ['US-', 'USA'],
   '🗻': ['Japan'],
+  '🐉': ['China'],
   '❤️': ['Erotik']
 };
 
