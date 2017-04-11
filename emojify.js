@@ -1,11 +1,11 @@
 var emo = [];
 
 var map = {
-  '📈': ['Börse', 'DAX', 'Dax', 'Aktie'],
+  '📈': ['Börse', 'DAX', 'Dax', 'Aktie','Umsatz'],
   '🏭': ['Industrie'],
-  '💥': ['Anschlag', 'Anschlägen','Bombe'],
+  '💥': ['Anschlag', 'Anschlägen','Bombe','Terroranschlag'],
   '🏦': ['Bank','Notenbank','Zentralbank'],
-  '💰': ['Finanzen','Sparprogramm'],
+  '💰': ['Finanzen','Sparprogramm','EZB','Verkauf'],
   '⚖️': ['Gericht'],
   '🗽': ['US-', 'USA'],
   '🗻': ['Japan'],
@@ -15,8 +15,8 @@ var map = {
   '😓': ['Problem'],
   '⚽': ['Fußball'],
   '🏁': ['Formel 1'],
-  '👛': ['Rechnung'],
-  '✈️': ['Airlines', 'Flugzeug', 'Airbus', 'Lufthansa',' Flugreisen'],
+  '👛': ['Rechnung', 'Belastung'],
+  '✈️': ['Airlines', 'Flugzeug', 'Airbus', 'Lufthansa',' Flugreisen','Billigflieger'],
   '🌍': ['Welt'],
   '📱': ['Smartphone'],
   '🎮': ['Nintendo'],
@@ -28,8 +28,15 @@ var map = {
   '🚘': ['Autos'],
   '🏠': ['Immobilien','Hausverwaltung'],
   '🍕': ['Pizza'],
+  '🏫': ['Schule'],
+  '🔫': ['Schießerei','Schüsse'],
+  '👔': ['Berater','Steuerberater','Aufsichtsrat','Chefs'],
+  '⛳': ['Golf'],
+  '🎾': ['Tennis'],
+  '🏆': ['Auszeichnung','-Preis'],
   '🚫': ['Diesel']
   //'': [''],
+
 };
 
 var dict = [];

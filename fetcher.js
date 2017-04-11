@@ -36,6 +36,7 @@ function parseBody(data, body){
     var isValidArticle = false;
     var isValidList = false;     
     var urlOriginal = $(this).attr('href');
+    var size = 'm';
     var url = '';
 
     if (urlOriginal){
@@ -77,12 +78,17 @@ function parseBody(data, body){
       for (var i=0,ii=clues.length;i<ii;i+=1){
         if (!title || typeof title === 'undefined'){
           title = $(this).find(clues[i]).first().text();
+          size = 'l';
+          //console.log('HTML', $(this).html());
+          //console.log('Finding Title',  clues[i] ,$(this).find(clues[i]).length);
         } else {
           i= ii+1;
         }
       }
 
       if (!title || typeof title === 'undefined'){
+        size = 'm';
+        console.log('title', title);
         title = $(this).text();
         if (title.length>150){
           title = title.substr(0,150) + '...';
@@ -102,7 +108,8 @@ function parseBody(data, body){
             urlOriginal: data.page.url + url,
             //urlOriginal: urlOriginal,
             title: title || '',
-            emoji: emojify.analyse(title)
+            emoji: emojify.analyse(title),
+            size: size
           });
         } else if (isValidList){
           links.lists.push({
