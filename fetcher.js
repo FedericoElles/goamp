@@ -31,6 +31,8 @@ function parseBody(data, body){
 
   var dirUrlAdded = {};
 
+  console.log('Dev', data.dev)
+  
   $('a').each(function(i, elem) {
     var isValid = true;
     var isValidArticle = false;
@@ -39,8 +41,17 @@ function parseBody(data, body){
     var size = 'm';
     var url = '';
     
+    
+    
     if (urlOriginal){
 
+      if (data.dev && data.url){
+        data.url = data.url.replace(data.dev[0], data.dev[1]);
+      }
+      if (data.dev && data.urlAMP){
+        data.urlAMP = data.urlAMP.replace(data.dev[0], data.dev[1]);
+      }
+      
       //filter invalid urls
       data.page.invalid.forEach(function(strRegEx){
         if (isValid){
@@ -107,10 +118,14 @@ function parseBody(data, body){
       }
       
       
+      
+      
       if (title && url && typeof dirUrlAdded[url] === 'undefined'){
         dirUrlAdded[url] = true;  
+        var titleLength = title.length - title.replace(/ /g,'').length;
         
-        if (isValidArticle){
+        //title must be at least 3 words long
+        if (isValidArticle && titleLength > 1){
           var urlAMP = data.page.url + url;
           if (typeof data.page.urlAMP === 'string'){
             urlAMP = data.page.urlAMP + url;

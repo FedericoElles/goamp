@@ -40,6 +40,7 @@ app.get("/", function (req, res) {
 app.get("/:page/*", function (req, res) {
   var data = {
     debug: !!req.query.debug,
+    dev: !!req.query.dev,
     pageId: req.params.page,
     url: req.originalUrl
   };
