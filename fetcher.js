@@ -45,11 +45,12 @@ function parseBody(data, body){
     
     if (urlOriginal){
 
-      if (data.dev && data.url){
-        data.url = data.url.replace(data.dev[0], data.dev[1]);
+      if (data.dev && data.url && data.dev.actionReplace){
+        data.url = data.url.replace(data.dev.actionReplace[0], data.dev.actionReplace[1]);
       }
-      if (data.dev && data.urlAMP){
-        data.urlAMP = data.urlAMP.replace(data.dev[0], data.dev[1]);
+      if (data.dev && data.urlAMP && data.dev.actionReplace){
+        console.log('amp', urlAMP);
+        data.urlAMP = data.urlAMP.replace(data.dev.actionReplace[0], data.dev.actionReplace[1]);
       }
       
       //filter invalid urls
