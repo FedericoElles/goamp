@@ -1,0 +1,21 @@
+
+<div class="o-wrapper u-pad-s">
+
+
+  <h1 class="u-h1 u-color-1">AMP QA Service</h1>
+
+ 
+  {{#> subtitle}}Webseiten{{/subtitle}}
+  
+  {{#each pages }}
+   {{> page}}
+  {{/each}}
+
+
+
+
+  {{#if  debug}}
+    <hr>
+    <pre>{{{json}}}</pre>
+  {{/if}}
+</div>
