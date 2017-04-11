@@ -17,6 +17,7 @@
     "title": "Wirtschafts Woche",
     "url": "https://www.wiwo.de",
     "urlAMP": "https://amp.wiwo.de",
+    "dev": {"replace": ["amp.","e2e-amp"]},
     "remove": [".hcf-doctype-imagegallery",".hcf-column.hcf-column2.hcf-ticker-box",".vhb-serviceoffer"],
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
@@ -29,10 +30,23 @@
     "title": "Tagesspiegel",
     "url": "https://www.tagesspiegel.de",
     "urlAMP": "https://amp.tagesspiegel.de",
+    "dev": {"replace": ["amp.","e2e-amp"]},
     "remove": [".hcf-doctype-imagegallery",".hcf-column.hcf-column2.hcf-ticker-box",".vhb-serviceoffer"],
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
     "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*",".*daily-challenge.*"],
+    "titleClues": ["h2", "h3"]
+  },
+  "spiegel": {
+    "id": "spiegel",
+    "emoji": "🍿",
+    "title": "Der Spiegel",
+    "url": "https://www.spiegel.de",
+    "urlAMP": {"actionReplace": [".html", "-amp.html"]},
+    "remove": [".nav-channel-partner-entry",".nav-3"],
+    "validArticles": "^(\\/.*-\\d{5,}\\.html).*",
+    "validLists": "^(\\/\\D*\\/).*",
+    "invalid": ["^\\/video.*","^\\/fotostrecke.*", "^(\\/.*\\/a-\\d{5,}\\.html).*"],
     "titleClues": ["h2", "h3"]
   }  
 }
