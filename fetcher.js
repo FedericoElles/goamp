@@ -31,6 +31,8 @@ function parseBody(data, body){
 
   var dirUrlAdded = {};
 
+  console.log('Dev', data.dev)
+  
   $('a').each(function(i, elem) {
     var isValid = true;
     var isValidArticle = false;
@@ -38,9 +40,19 @@ function parseBody(data, body){
     var urlOriginal = $(this).attr('href');
     var size = 'm';
     var url = '';
-
+    
+    
+    
     if (urlOriginal){
 
+      if (data.dev && data.url && data.dev.actionReplace){
+        data.url = data.url.replace(data.dev.actionReplace[0], data.dev.actionReplace[1]);
+      }
+      if (data.dev && data.urlAMP && data.dev.actionReplace){
+        console.log('amp', urlAMP);
+        data.urlAMP = data.urlAMP.replace(data.dev.actionReplace[0], data.dev.actionReplace[1]);
+      }
+      
       //filter invalid urls
       data.page.invalid.forEach(function(strRegEx){
         if (isValid){
@@ -88,23 +100,46 @@ function parseBody(data, body){
 
       if (!title || typeof title === 'undefined'){
         size = 'm';
-        console.log('title', title);
+        //console.log('title', title);
         title = $(this).text();
         if (title.length>150){
           title = title.substr(0,150) + '...';
         }
       }
+      
+      if (!title || typeof title === 'undefined'){
+        title = $(this).attr('title') || $(this).attr('alt');
+      }
 
+
+      
       if (title){
         title = title.replace(/(\r\n|\n|\r)/gm,"");
         title = title.replace(/\s+/g, ' ');
       }
+      
+      
+      
+      
       if (title && url && typeof dirUrlAdded[url] === 'undefined'){
-        dirUrlAdded[url] = true;
-        if (isValidArticle){
+        dirUrlAdded[url] = true;  
+        var titleLength = title.length - title.replace(/ /g,'').length;
+        
+        //title must be at least 3 words long
+        if (isValidArticle && titleLength > 1){
+          var urlAMP = data.page.url + url;
+          if (typeof data.page.urlAMP === 'string'){
+            urlAMP = data.page.urlAMP + url;
+          }
+          if (typeof data.page.urlAMP === 'object'){
+            if (data.page.urlAMP.actionReplace){
+              urlAMP = urlAMP.replace(data.page.urlAMP.actionReplace[0],data.page.urlAMP.actionReplace[1]);
+            }
+          }
+          
           links.articles.push({
             url: url,
-            urlAMP: data.page.urlAMP + url,
+            urlAMP: urlAMP,
             urlOriginal: data.page.url + url,
             //urlOriginal: urlOriginal,
             title: title || '',
