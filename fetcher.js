@@ -15,7 +15,7 @@ function parseBody(data, body){
         
   //remove everything not required in DOM
   data.page.remove.forEach(function(selector){
-    console.log('Remove:' + selector + ': ' + $(selector).length);
+    //console.log('Remove:' + selector + ': ' + $(selector).length);
     $(selector).remove();
   });
 
@@ -31,7 +31,7 @@ function parseBody(data, body){
 
   var dirUrlAdded = {};
 
-  console.log('Dev', data.dev)
+  //console.log('Dev', data.dev)
   
   $('a').each(function(i, elem) {
     var isValid = true;
@@ -132,7 +132,7 @@ function parseBody(data, body){
           
           if (data.dev){
             urlAMP = urlAMP.replace(data.page.dev.actionReplace[0], data.page.dev.actionReplace[1]);
-            console.log('urlAMP', urlAMP);
+            //console.log('urlAMP', urlAMP);
           }
           
           links.articles.push({
