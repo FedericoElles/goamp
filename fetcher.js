@@ -130,7 +130,7 @@ function parseBody(data, body){
             }
           }
           
-          if (data.dev){
+          if (data.dev && data.page.dev){
             urlAMP = urlAMP.replace(data.page.dev.actionReplace[0], data.page.dev.actionReplace[1]);
             //console.log('urlAMP', urlAMP);
           }

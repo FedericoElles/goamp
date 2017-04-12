@@ -1,18 +1,20 @@
 var emo = [];
 
 var map = {
-  '📈': ['Börse', 'DAX', 'Dax', 'Aktie','Umsatz','Jahresbilanz'],
+  '📈': ['Börse', 'DAX', 'Dax', 'Aktie','Umsatz','Jahresbilanz','Aufschwung', 'Konjunktur'],
   '🏭': ['Industrie'],
-  '💥': ['Anschlag', 'Anschlägen','Bombe','Terroranschlag'],
+  '💥': ['Anschlag', 'Anschlägen','Bombe','Terroranschlag','Explosion'],
   '🏦': ['Bank','Notenbank','Zentralbank'],
   '💰': ['Finanzen','Sparprogramm','EZB','Verkauf'],
   '⚖️': ['Gericht'],
   '🗽': ['US-', 'USA'],
   '🗻': ['Japan'],
-  '🐉': ['China','chinesischen'],
+  '🐉': ['China','chinesischen','Chinesischer'],
+  '🏰': ['England'],
   '❤️': ['Erotik'],
   '📺': ['TV-','Fernsehen'],
   '😓': ['Problem'],
+  '🚨': ['Polizei'],
   '⚽': ['Fußball','Champions League'],
   '🏁': ['Formel 1'],
   '👛': ['Rechnung', 'Belastung'],
@@ -32,17 +34,22 @@ var map = {
   '🔫': ['Schießerei','Schüsse'],
   '👔': ['Berater','Steuerberater','Aufsichtsrat','Chefs','Vorstandchef'],
   '🕒': ['Auszeit','Arbeitszeit'],
+  '⚕️': ['Medizin'],
   '⛳': ['Golf'],
   '🎾': ['Tennis'],
   '🏆': ['Auszeichnung','-Preis','Sieger'],
   '🚂': ['Zuggeschäft'],
   '🌞': ['Sonnensystem'],
+  '💥': ['Crash'],
+  '🔥': ['Brandanschlag'],
   '👑': ['Patriarch','Präsident'],
   '👓': ['Schneller schlau'],
-  '📄': ['Studie'],
+  '📄': ['Studie','bericht'],
+  '📃': ['Blog','Live-Blog'],
   '💩': ['Shitstorm'],
   '📉': ['Verlust'],
-  '🚫': ['Diesel']
+  '🚫': ['Diesel'],
+  '🐣': ['Ostern']
   //'': [''],
 
 };
