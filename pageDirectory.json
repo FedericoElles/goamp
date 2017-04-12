@@ -9,7 +9,7 @@
     "remove": [".vhb-type-imagegallery",".vhb-eye-catcher-wrapper",".vhb-serviceoffer"],
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
-    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*"],
+    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*","^\\/boersenberichte.*",".*v_detail_tab_comments.*"],
     "titleClues": ["h2", "h3"]
   },
   "wiwo": {
