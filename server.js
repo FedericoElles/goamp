@@ -30,8 +30,15 @@ app.use(compression());
 app.get("/", function (req, res) {
   var data = {
     debug: !!req.query.debug,
-    pages: pageDirectory
+    dev: !!req.query.dev,
+    pages: pageDirectory,
+    suffix: ''
   };  
+  
+  if (data.dev){
+    data.suffix = '?dev=true';
+  }
+  
   data.json = JSON.stringify(data, undefined, 4);
   
   res.render('home', data);
@@ -40,10 +47,16 @@ app.get("/", function (req, res) {
 app.get("/:page/*", function (req, res) {
   var data = {
     debug: !!req.query.debug,
+    suffix: '',
     dev: !!req.query.dev,
     pageId: req.params.page,
     url: req.originalUrl
   };
+  
+  if (data.dev){
+    data.suffix = '?dev=true';
+  }
+  
   var parts = data.url.substr(1).split('/');
   parts.shift(); //remove first
   data.parts = parts;
