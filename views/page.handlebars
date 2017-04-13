@@ -17,7 +17,9 @@
   {{#> subtitle}}Artikel{{/subtitle}}
 
   {{#each links.articles }}
-    {{> teaser}}
+    {{#if show}}
+      {{> teaser pageId=../pageId debug=../debug}}
+    {{/if}}
   {{/each}}
 
 

@@ -13,7 +13,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 var pageDirectory = require('./pageDirectory.json');
 var fetcher = require('./fetcher.js');
-
+var tester = require('./tester.js');
 
 
 
@@ -44,6 +44,40 @@ app.get("/", function (req, res) {
   res.render('home', data);
 });
 
+
+
+
+app.get("/isamp/:page/*", function (req, res) {
+  var data = {
+    debug: !!req.query.debug,
+    suffix: '',
+    dev: !!req.query.dev,
+    pageId: req.params.page,
+    url: req.originalUrl
+  };
+  
+  if (data.dev){
+    data.suffix = '?dev=true';
+  }
+  var parts = data.url.substr(1).split('/');
+  parts.shift(); //remove first
+  parts.shift(); //remove second
+  data.parts = parts;
+  data.remoteUrl = '/' + data.parts.join('/');
+  data.page = pageDirectory[data.pageId];
+  
+ 
+  tester.get(data.page.urlAMP + data.remoteUrl).then(function(result){
+    res.send(result);
+    //}
+  }).catch(function(err){
+    res.send(err);
+  });
+  
+});
+
+
+
 app.get("/:page/*", function (req, res) {
   var data = {
     debug: !!req.query.debug,
@@ -66,6 +100,7 @@ app.get("/:page/*", function (req, res) {
   if (true){
     fetcher.get(data).then(function(fetchData){
       var html = "";
+          
       data.links = fetchData.links;
       // data.links.forEach(function(link){
       //   html += link.url + '<br>';
@@ -83,6 +118,8 @@ app.get("/:page/*", function (req, res) {
     res.send(data);
   }
 });
+
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {

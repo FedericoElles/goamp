@@ -16,7 +16,8 @@
     "q": "^2.0.3",
     "express-handlebars": "^3.0.0",
     "compression": "^1.6.2",
-    "node-cache": "^4.1.1"
+    "node-cache": "^4.1.1",
+    "crypto": "^0.0.3"
   },
   "engines": {
     "node": "6.9.x"

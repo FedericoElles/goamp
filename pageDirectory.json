@@ -9,8 +9,9 @@
     "remove": [".vhb-type-imagegallery",".vhb-eye-catcher-wrapper",".vhb-serviceoffer"],
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
-    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*","^\\/boersenberichte.*",".*v_detail_tab_comments.*"],
-    "titleClues": ["h2", "h3"]
+    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*","^\\/boersenberichte.*",".*v_detail_tab_comments.*",".*wahl-o-mat.*"],
+    "titleClues": ["h2", "h3"],
+    "flagStripeFolders": true
   },
   "wiwo": {
     "id": "wiwo",
@@ -22,8 +23,9 @@
     "remove": [".hcf-doctype-imagegallery",".hcf-column.hcf-column2.hcf-ticker-box",".vhb-serviceoffer"],
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
-    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*",".*daily-challenge.*"],
-    "titleClues": ["h2", "h3"]
+    "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*",".*daily-challenge.*",".*wahl-o-mat.*"],
+    "titleClues": ["h2", "h3"],
+    "flagStripeFolders": true
   },
   "tagesspiegel": {
     "id": "tagesspiegel",

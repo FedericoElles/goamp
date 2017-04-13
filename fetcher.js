@@ -1,6 +1,7 @@
 let cheerio = require('cheerio')
 var request = require('request');
 var Q = require('q');
+var tester = require('./tester.js');
 
 
 var emojify = require('./emojify');
@@ -12,7 +13,7 @@ const myCache = new NodeCache({ stdTTL: 60, checkperiod: 80 });
 
 function parseBody(data, body){
   let $ = cheerio.load(body);
-        
+  
   //remove everything not required in DOM
   data.page.remove.forEach(function(selector){
     //console.log('Remove:' + selector + ': ' + $(selector).length);
@@ -120,6 +121,15 @@ function parseBody(data, body){
         
         //title must be at least 3 words long
         if (isValidArticle && titleLength > 1){
+          
+          //Special: flagStripeFolders - remove 
+          // BEFORE: /politik/deutschland/bildungspolitik-akademisierungswahn-gefaehrdet-berufliche-bildung/19665020.html
+          // AFTER:                       bildungspolitik-akademisierungswahn-gefaehrdet-berufliche-bildung/19665020.html
+          if (data.page.flagStripeFolders){
+            var partsUrl = url.split('/');
+            url = '/' + partsUrl.slice(-2).join('/');
+          }
+          
           var urlAMP = data.page.url + url;
           if (typeof data.page.urlAMP === 'string'){
             urlAMP = data.page.urlAMP + url;
@@ -130,11 +140,14 @@ function parseBody(data, body){
             }
           }
           
+          var urlAMPOrignal = urlAMP;
+          
           if (data.dev && data.page.dev){
             urlAMP = urlAMP.replace(data.page.dev.actionReplace[0], data.page.dev.actionReplace[1]);
             //console.log('urlAMP', urlAMP);
           }
           
+          var noAmp = tester.test(urlAMPOrignal);
           links.articles.push({
             url: url,
             urlAMP: urlAMP,
@@ -142,7 +155,9 @@ function parseBody(data, body){
             //urlOriginal: urlOriginal,
             title: title || '',
             emoji: emojify.analyse(title),
-            size: size
+            size: size,
+            noAmp: noAmp,
+            show: (data.debug && noAmp) || !noAmp
           });
         } else if (isValidList){
           links.lists.push({
