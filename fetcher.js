@@ -147,7 +147,14 @@ function parseBody(data, body){
             //console.log('urlAMP', urlAMP);
           }
           
-          var noAmp = tester.test(urlAMPOrignal);
+          
+          var noAmp
+          if (typeof data.page.flagAllAMP === 'undefined'){
+            noAmp = data.page.flagAllAMP ||tester.test(urlAMPOrignal);  
+          }
+          
+          
+          
           links.articles.push({
             url: url,
             urlAMP: urlAMP,

@@ -67,7 +67,18 @@ app.get("/isamp/:page/*", function (req, res) {
   data.page = pageDirectory[data.pageId];
   
  
-  tester.get(data.page.urlAMP + data.remoteUrl).then(function(result){
+  var urlAMP = data.page.url + data.remoteUrl;
+  if (typeof data.page.urlAMP === 'string'){
+    urlAMP = data.page.urlAMP + data.remoteUrl;
+  }
+  if (typeof data.page.urlAMP === 'object'){
+    if (data.page.urlAMP.actionReplace){
+      urlAMP = urlAMP.replace(data.page.urlAMP.actionReplace[0],data.page.urlAMP.actionReplace[1]);
+    }
+  }
+
+  
+  tester.get(urlAMP).then(function(result){
     res.send(result);
     //}
   }).catch(function(err){

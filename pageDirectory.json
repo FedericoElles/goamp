@@ -38,18 +38,20 @@
     "validArticles": "^(\\/(?!my).*\\/\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
     "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*",".*daily-challenge.*"],
-    "titleClues": ["h2", "h3"]
+    "titleClues": ["h2", "h3"],
+    "flagAllAMP": true
   },
   "spiegel": {
     "id": "spiegel",
     "emoji": "🍿",
     "title": "Der Spiegel",
-    "url": "https://www.spiegel.de",
+    "url": "http://www.spiegel.de",
     "urlAMP": {"actionReplace": [".html", "-amp.html"]},
     "remove": [".nav-channel-partner-entry",".nav-3"],
     "validArticles": "^(\\/.*-\\d{5,}\\.html).*",
     "validLists": "^(\\/\\D*\\/).*",
     "invalid": ["^\\/video.*","^\\/fotostrecke.*", "^(\\/.*\\/a-\\d{5,}\\.html).*"],
-    "titleClues": ["h2", "h3"]
+    "titleClues": ["h2", "h3"],
+    "flagAllAMP": true
   }  
 }
