@@ -11,7 +11,7 @@
     "validLists": "^(\\/\\D*\\/).*",
     "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*","^\\/boersenberichte.*",".*v_detail_tab_comments.*",".*wahl-o-mat.*"],
     "titleClues": ["h2", "h3"],
-    "flagStripeFolders": true
+    "flagStripeFolders": false
   },
   "wiwo": {
     "id": "wiwo",
@@ -25,7 +25,7 @@
     "validLists": "^(\\/\\D*\\/).*",
     "invalid": ["^\\/my.*","^\\/video.*","^\\/input.*",".*v_detail_tab_comments.*",".*daily-challenge.*",".*wahl-o-mat.*"],
     "titleClues": ["h2", "h3"],
-    "flagStripeFolders": true
+    "flagStripeFolders": false
   },
   "tagesspiegel": {
     "id": "tagesspiegel",
